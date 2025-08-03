@@ -13,7 +13,7 @@ pub fn readAllFromFile(
         .{ .mode = .read_only },
     );
     defer file.close();
-    return try file.reader().readAllAlloc(alloc, @import("std").math.maxInt(i64));
+    return try file.reader().readAllAlloc(alloc, @import("std").math.maxInt(usize));
 }
 
 pub fn readFromFile(
