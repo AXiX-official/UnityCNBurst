@@ -13,7 +13,8 @@ pub fn readAllFromFile(
         .{ .mode = .read_only },
     );
     defer file.close();
-    return try file.reader().readAllAlloc(alloc, @import("std").math.maxInt(usize));
+    // `readToEndAlloc` Deprecated in favor of `Reader`.
+    return try file.readToEndAlloc(alloc, std.math.maxInt(usize));
 }
 
 pub fn readFromFile(
@@ -25,7 +26,7 @@ pub fn readFromFile(
         .{ .mode = .read_only },
     );
     defer file.close();
-    return try file.reader().readAll(buffer);
+    return try file.read(buffer);
 }
 
 pub fn skipNullterminatedString(data: []const u8) !usize {

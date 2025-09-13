@@ -58,12 +58,14 @@ pub fn build(b: *std.Build) void {
 
         const exe_opt = b.addExecutable(.{
             .name = exe_name,
-            .root_source_file = b.path("src/main.zig"),
-            .target = b.resolveTargetQuery(.{
-                .cpu_arch = cross_target.cpu_arch,
-                .os_tag = cross_target.os_tag,
+            .root_module = b.createModule(.{
+                .root_source_file = b.path("src/main.zig"),
+                .target = b.resolveTargetQuery(.{
+                    .cpu_arch = cross_target.cpu_arch,
+                    .os_tag = cross_target.os_tag,
+                }),
+                .optimize = .ReleaseFast,
             }),
-            .optimize = .ReleaseFast,
         });
 
         const install_step = b.addInstallArtifact(exe_opt, .{});
