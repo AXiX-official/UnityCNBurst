@@ -11,7 +11,7 @@ Visit [Releases page](https://github.com/AXiX-official/UnityCNBurst/releases) to
 
 ### Method 2: Build From Source (For Developers)
 
-Ensure you have [Zig](https://ziglang.org/)(higher than 1.4.1) installed.
+Ensure you have [Zig 0.15.1](https://ziglang.org/) installed.
 
 ```bash
 git clone https://github.com/AXiX-official/UnityCNBurst
